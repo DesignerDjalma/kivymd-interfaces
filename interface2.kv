@@ -1,0 +1,52 @@
+ScreenManager:
+    TelaTeste:
+
+
+<CaixaEntradaDeDados@MDFloatLayout>:
+    pos_hint: {"center_x": .5, "center_y": .5} # Alterar
+    size_hint: .8, .08
+
+<CaixaImagem@Image>:
+    source: "" # Alterar
+    pos_hint: {"center_x": .96, "center_y": .55}
+    size_hint: .7, .7
+
+<CaixaTitulo@MDLabel>:
+    text: "" # Alterar
+    font_size: "14sp"
+    font_name: "Poppins-Medium.ttf"
+    pos_hint: {"center_x": .5, "center_y": .9} 
+
+<CaixaInput@TextInput>:
+    text: "" # Alterar
+    size_hint_y: .75
+    font_name: "Poppins-Regular.ttf"
+    pos_hint: {"center_x": .49, "center_y": .4} 
+    background_color: 0, 0, 0, 0    
+    cursor_color: 0, 0, 0, 1
+    cursor_width: "2sp"
+    foreground_color: 120/255, 120/255, 120/255, 1
+    font_size: "17sp"
+    multiline: False
+
+
+<TelaTeste@Screen>:
+    
+    CaixaEntradaDeDados:
+        pos_hint: {"center_x": .5, "center_y": 0.6}
+        CaixaTitulo:
+            text:"MESAGEM SECRETA"
+        CaixaImagem:
+            source:"./images/msgbinario.png"
+        CaixaInput:
+            hint_text: "Digite aqui a mensagem secreta"
+
+    CaixaEntradaDeDados:
+        pos_hint: {"center_x": .5, "center_y": 0.3}
+        CaixaTitulo:
+            text:"MENSAGEM TRADUZIDA"
+        CaixaImagem:
+            source:"./images/msgtxt.png"
+        CaixaInput:
+            disabled: True
+            hint_text: "Resultado da tradução"

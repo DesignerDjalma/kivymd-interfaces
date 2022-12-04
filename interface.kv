@@ -1,33 +1,189 @@
-MDFloatLayout:
+ScreenManager:
+    TelaInicial:
+    TelaPrincipal:
 
-    MDRectangleFlatButton:
-        line_color: 0, 0, 0, 0
-        text: "[size=32][b]Interface[/b][/size]"
-        # pos_hint: {'x': .4, 'y':.9 }
 
-    MDList:
-        id: container
-        MDBoxLayout:
-            orientation: "horizontal"
-            #size_hint_y: None
-            height: self.minimum_height
-            spacing: '10dp'
-            padding: ('20dp', '20dp', '20dp', '20dp')
+<CaixaEntradaDeDados@MDFloatLayout>:
+    pos_hint: {"center_x": .5, "center_y": .5} # Alterar
+    size_hint: .8, .08
 
-            MDBoxLayout:
-                orientation: "horizontal"
-                #size_hint_y: None
-                height: self.minimum_height
-                spacing: '10dp'
-                padding: ('20dp', '20dp', '20dp', '20dp')
+<CaixaImagem@Image>:
+    source: "" # Alterar
+    pos_hint: {"center_x": .96, "center_y": .55}
+    size_hint: .7, .7
 
-                MDTextField:
-                MDTextField:
-                MDTextField:
-                MDTextField:
-                MDTextField:
-                MDTextField:
-                MDTextField:
-                MDTextField:
-                MDTextField:
-                MDTextField:
+<CaixaTitulo@MDLabel>:
+    text: "" # Alterar
+    font_size: "14sp"
+    font_name: "Poppins-Medium.ttf"
+    pos_hint: {"center_x": .5, "center_y": .9} 
+
+<CaixaInput@TextInput>:
+    text: "" # Alterar
+    size_hint_y: .75
+    font_name: "Poppins-Regular.ttf"
+    pos_hint: {"center_x": .49, "center_y": .4} 
+    background_color: 0, 0, 0, 0    
+    cursor_color: 0, 0, 0, 1
+    cursor_width: "2sp"
+    foreground_color: 120/255, 120/255, 120/255, 1
+    font_size: "17sp"
+    multiline: False
+
+<BotaoPadrao@Button>:
+    text: "Traduzir"
+    background_color: 0, 0, 0, 0
+    font_name: "Poppins-Medium.ttf"
+    size_hint: .79, .065
+    pos_hint: {"center_x": .5, "center_y": .45}   
+    on_release: root.loga(cpf.text, senha.text)      
+        
+    canvas.before:
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [2]  
+        Color:
+            rgb: 25/255, 38/255, 35/255, 1
+
+<BotaoPadraoPreto>:
+    BotaoPadrao:
+        canvas.before:
+            Color:
+                rgb: 3/255, 3/255, 3/255, 1
+
+<TelaInicial>:
+    
+    name: 'tela_boas_vindas'    
+    
+    MDFloatLayout:
+        md_bg_color: 188/255, 227/255, 217/255, 1
+        Image:
+            pos_hint: {"center_x": .54, "center_y": .6}
+            size_hint: .50, .50
+            source: "./images/encrypted.png"
+            canvas.before:
+                Color:
+                    rgb: 1, .85, .825, 1   
+        MDIconButton:
+            pos_hint: {"center_x": .5, "center_y": .12}      
+            user_font_size: "45sp"
+            icon: "chevron-right"
+            on_press:
+                app.root.current = 'tela_principal'
+            
+        MDLabel:
+            id: titulo
+            # text: "Decifrador λνμΘ"
+            #font_size:"55sp"
+            font_name: "Poppins-SemiBold.ttf"
+            text: "Decifrador 1.0"
+            font_size:"35sp"
+            text_color: 0, 0, 0
+            pos_hint: {"center_x": .5, "center_y": .28}       
+            halign: "center"
+            theme_text_color: "Custom"
+
+        MDLabel:
+            text: "Decifra mensagens super secretas!"   
+            text_color: 0, 0, 0 
+            pos_hint: {"center_x": .5, "center_y": .21}       
+            font_size:"13sp"
+            halign: "center"
+            theme_text_color: "Custom"
+            font_name: "Poppins-Regular.ttf"
+
+
+<TelaPrincipal>:
+    name: 'tela_principal'
+
+    
+    
+    MDFloatLayout:
+        
+        md_bg_color: 188/255, 227/255, 217/255, 1
+        Image:
+            source: "images/detetive.png"       
+            size_hint: .2, .2
+            pos_hint: {"center_x": .25, "center_y": .86}
+
+        MDLabel:
+            id: nomeDetetive
+            text: "..."
+            font_size: "28sp"
+            font_name: "Poppins-SemiBold.ttf"
+            pos_hint: {"center_x": .6, "center_y": .73}    
+
+        MDLabel:
+            text: "Ajuda"
+            halign:"center"
+            font_size: "14.5sp"
+            font_name: "Poppins-SemiBold.ttf"
+            pos_hint: {"center_x": .5, "center_y": .055}    
+            id: lblogin       
+        
+
+
+        MDFloatLayout:
+            size_hint: .79, .08
+            pos_hint: {"center_x": .5, "center_y": .60}   
+            
+            MDLabel:
+                text:"MENSAGEM SECRETA"
+                font_size: "14sp"
+                font_name: "Poppins-Medium.ttf"
+                pos_hint: {"center_x": .5, "center_y": .9} 
+            TextInput:
+                id: cpf
+                size_hint_y: .75
+                font_name: "Poppins-Regular.ttf"
+                pos_hint: {"center_x": .49, "center_y": .4} 
+                background_color: 0, 0, 0, 0    
+                cursor_color: 0, 0, 0, 1
+                cursor_width: "2sp"
+                foreground_color: 120/255, 120/255, 120/255, 1
+                font_size: "17sp"
+                multiline: False
+            Image: 
+                source: "images/msgbinario.png"     
+                pos_hint: {"center_x": .96, "center_y": .55}
+                size_hint: .7, .7
+            MDFloatLayout:
+                pos_hint: {"center_x": .5, "center_y": 0}
+                size_hint_y: .03    
+                md_bg_color: 120/255, 120/255, 120/255, 1
+
+        
+
+        
+        MDFloatLayout:
+            size_hint: .79, .08
+            pos_hint: {"center_x": .5, "center_y": .30}  
+       
+            MDLabel:
+                text:"MENSAGEM TRADUZIDA"
+                font_size: "14sp"
+                font_name: "Poppins-Medium.ttf"
+                pos_hint: {"center_x": .5, "center_y": .9} 
+            
+            TextInput:
+                id: mensagemTraduzida
+                size_hint_y: .75
+                font_name: "Poppins-Regular.ttf"
+                pos_hint: {"center_x": .49, "center_y": .4} 
+                background_color: 0, 0, 0, 0    
+                cursor_color: 0, 0, 0, 1
+                cursor_width: "2sp"
+                font_size: "17sp"
+                multiline: False
+                password: True
+            Image: 
+                source: "images/msgtxt.png"     
+                pos_hint: {"center_x": .96, "center_y": .55}
+                size_hint: .7, .7
+            MDFloatLayout:
+                pos_hint: {"center_x": .5, "center_y": 0}
+                size_hint_y: .03    
+                md_bg_color: 120/255, 120/255, 120/255, 1    
+
+        
