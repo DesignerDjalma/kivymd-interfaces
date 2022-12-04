@@ -1,5 +1,5 @@
 ScreenManager:
-    TelaTeste:
+    TelaPrincipal:
 
 
 <CaixaEntradaDeDados@MDFloatLayout>:
@@ -27,7 +27,7 @@ ScreenManager:
     cursor_width: "2sp"
     foreground_color: 120/255, 120/255, 120/255, 1
     font_size: "17sp"
-    multiline: False
+    multiline: False 
 
 
 <BotaoPadrao@Button>:
@@ -48,27 +48,9 @@ ScreenManager:
 
 
 
-<TelaTeste@Screen>:
+<TelaPrincipal@Screen>:
     
-    CaixaEntradaDeDados:
-        pos_hint: {"center_x": .5, "center_y": 0.6}
-        CaixaTitulo:
-            text:"MESAGEM SECRETA"
-        CaixaImagem:
-            source:"./images/msgbinario.png"
-        CaixaInput:
-            hint_text: "Digite aqui a mensagem secreta"
-
     BotaoPadrao:
         text: "Traduzir"
-        pos_hint: {"center_x": .5, "center_y": .45}
+        pos_hint: {"center_x": .5, "center_y": .5}
 
-    CaixaEntradaDeDados:
-        pos_hint: {"center_x": .5, "center_y": 0.3}
-        CaixaTitulo:
-            text:"MENSAGEM TRADUZIDA"
-        CaixaImagem:
-            source:"./images/msgtxt.png"
-        CaixaInput:
-            disabled: True
-            hint_text: "Resultado da tradução"

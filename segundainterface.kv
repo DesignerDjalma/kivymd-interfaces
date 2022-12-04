@@ -1,0 +1,90 @@
+ScreenManager:
+    TelaPrincipal:
+
+
+<CaixaEntradaDeDados@MDFloatLayout>:
+    pos_hint: {"center_x": .5, "center_y": .5} # Alterar
+    size_hint: .8, .08
+
+<CaixaImagem@Image>:
+    source: "" # Alterar
+    pos_hint: {"center_x": .96, "center_y": .55}
+    size_hint: .7, .7
+
+<CaixaTitulo@MDLabel>:
+    text: "" # Alterar
+    font_size: "14sp"
+    font_name: "Poppins-Medium.ttf"
+    pos_hint: {"center_x": .5, "center_y": .9} 
+
+<CaixaInput@TextInput>:
+    text: "" # Alterar
+    size_hint_y: .75
+    font_name: "Poppins-Regular.ttf"
+    pos_hint: {"center_x": .49, "center_y": .4} 
+    background_color: 0, 0, 0, 0    
+    cursor_color: 0, 0, 0, 1
+    cursor_width: "2sp"
+    foreground_color: 120/255, 120/255, 120/255, 1
+    font_size: "17sp"
+    multiline: False 
+
+<BotaoPadrao@Button>:
+    text: "" # Alterar
+    # pos_hint: {"center_x": .5, "center_y": .45}  # Alterar 
+    background_color: 0, 0, 0, 0
+    font_name: "Poppins-Medium.ttf"
+    # size_hint: .4, .04
+    size_hint: .6, 0.075
+    on_release: root.loga(cpf.text, senha.text)           
+    canvas.before:
+        RoundedRectangle:
+            size: self.size
+            pos: self.pos
+            radius: [2]  
+        Color:
+            rgb: 25/255, 38/255, 35/255, 1
+
+
+
+<TelaPrincipal@Screen>:
+    MDFloatLayout:
+        pos_hint: {"center_x": .5, "center_y": .5} # Alterar
+        size_hint: 1.0, 1.0
+        
+        # Button:
+        #     size_hint: 1.0, 1.0
+        #     canvas.before:
+        #         Color:
+        #             rgb: 222/255, 38/255, 35/255, 1
+
+        
+
+
+        BotaoPadrao:
+            pos_hint: {"center_x": .5, "center_y": .65}
+            text: "Maior dos Elemento"
+        
+        BotaoPadrao:
+            pos_hint: {"center_x": .5, "center_y": .55}
+            text: "Soma dos Elementos"
+        
+        BotaoPadrao:
+            pos_hint: {"center_x": .5, "center_y": .45}
+            text: "Ocorrências do 1° Elemento"
+        
+        BotaoPadrao:
+            pos_hint: {"center_x": .5, "center_y": .35}
+            text: "Média dos Elementos"
+
+        BotaoPadrao:
+            pos_hint: {"center_x": .5, "center_y": .25}
+            text: "Elemento mais proxima da média"
+
+        BotaoPadrao:
+            pos_hint: {"center_x": .5, "center_y": .15}
+            text: "Soma dos Elementos Negativos"
+
+        BotaoPadrao:
+            pos_hint: {"center_x": .5, "center_y": .05}
+            text: "Quantidade de Vizinhos Iguais"

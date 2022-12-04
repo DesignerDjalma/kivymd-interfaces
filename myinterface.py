@@ -16,7 +16,7 @@ class TelaPrincipal(Screen):
 
 class InterfaceApp(MDApp):
     def build(self):
-        interface = Builder.load_file("./interface2.kv")
+        interface = Builder.load_file("./interface3.kv")
         return interface
 
 
