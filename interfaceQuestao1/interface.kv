@@ -1,11 +1,18 @@
 ScreenManager:
     TelaInicial:
     TelaPrincipal:
+    TelaAjuda:
 
 
 <CaixaEntradaDeDados@MDFloatLayout>:
     pos_hint: {"center_x": .5, "center_y": .5} # Alterar
     size_hint: .8, .08
+    
+    MDFloatLayout:
+        pos_hint: {"center_x": .5, "center_y": 0}
+        size_hint_y: .03    
+        md_bg_color: 120/255, 120/255, 120/255, 1
+
 
 <CaixaImagem@Image>:
     source: "" # Alterar
@@ -48,6 +55,7 @@ ScreenManager:
 
 
 
+
 <TelaInicial>:
     name: 'tela_boas_vindas'    
     
@@ -67,7 +75,8 @@ ScreenManager:
             user_font_size: "45sp"
             icon: "chevron-right"
             on_press:
-                app.root.current = 'tela_principal'
+                app.root.current = "tela_principal"
+                app.root.transition.direction = "left"
             
         MDLabel:
             id: titulo
@@ -92,8 +101,7 @@ ScreenManager:
 
 <TelaPrincipal>:
     name: 'tela_principal'
-
-    
+ 
     md_bg_color: 188/255, 227/255, 217/255, 1
 
     pos_hint: {"center_x": .5, "center_y": .5}
@@ -111,86 +119,67 @@ ScreenManager:
         font_name: "Poppins-SemiBold.ttf"
         pos_hint: {"center_x": .6, "center_y": .73}   
 
-
-
         # Deslocado
+    
+    CaixaEntradaDeDados:
+        pos_hint: {"center_x": .5, "center_y": .6}
+        CaixaTitulo:
+            text: "MENSAGEM SECRETA"
+        CaixaImagem:
+            source: "../images/msgbinario.png"
+        CaixaInput:
+
+    BotaoPadrao:
+        text: "Traduzir"
+        pos_hint: {"center_x": .5, "center_y": .45}
+
+
+    CaixaEntradaDeDados:
+        pos_hint: {"center_x": .5, "center_y": .3}
+        CaixaTitulo:
+            text: "MENSAGEM TRADUZIDA"
+        CaixaImagem:
+            source: "../images/msgtxt.png"
+        CaixaInput:
+
+    # Ajuda
     MDLabel:
         text: "Ajuda"
         halign:"center"
         font_size: "14.5sp"
         font_name: "Poppins-SemiBold.ttf"
         pos_hint: {"center_x": .5, "center_y": .055}    
-        id: lblogin       
+        id: ajuda
     
+    MDIconButton:
+        pos_hint: {"center_x": .5, "center_y": .02}      
+        user_font_size: "45sp"
+        icon: "chevron-right"
+        on_press:
+            app.root.current = "tela_ajuda"
+            app.root.transition.direction = "left"
 
-
-
-
-    MDFloatLayout:
-        size_hint: .79, .08
-        pos_hint: {"center_x": .5, "center_y": .60}   
-        
-        MDLabel:
-            text:"MENSAGEM SECRETA"
-            font_size: "14sp"
-            font_name: "Poppins-Medium.ttf"
-            pos_hint: {"center_x": .5, "center_y": .9} 
-        
-        TextInput:
-            id: cpf
-            size_hint_y: .75
-            font_name: "Poppins-Regular.ttf"
-            pos_hint: {"center_x": .49, "center_y": .4} 
-            background_color: 0, 0, 0, 0    
-            cursor_color: 0, 0, 0, 1
-            cursor_width: "2sp"
-            foreground_color: 120/255, 120/255, 120/255, 1
-            font_size: "17sp"
-            multiline: False
-        
-        Image: 
-            source: "images/msgbinario.png"     
-            pos_hint: {"center_x": .96, "center_y": .55}
-            size_hint: .7, .7
-        
-        MDFloatLayout:
-            pos_hint: {"center_x": .5, "center_y": 0}
-            size_hint_y: .03    
-            md_bg_color: 120/255, 120/255, 120/255, 1
+<TelaAjuda>:
+    name: "tela_ajuda"
+    Image:
+        source: "images/detetive.png"       
+        size_hint: .2, .2
+        pos_hint: {"center_x": .25, "center_y": .86}
+    MDLabel:
+        text: "Ajuda"
+        halign:"center"
+        font_size: "14.5sp"
+        font_name: "Poppins-SemiBold.ttf"
+        pos_hint: {"center_x": .5, "center_y": .055}    
+    
+    MDIconButton:
+        pos_hint: {"center_x": .5, "center_y": .02}      
+        user_font_size: "45sp"
+        icon: "chevron-left"
+        on_press:
+            app.root.current = "tela_principal"
+            app.root.transition.direction = "right"
+    
 
     
 
-        
-        MDFloatLayout:
-            size_hint: .79, .08
-            pos_hint: {"center_x": .5, "center_y": .30}  
-       
-            MDLabel:
-                text:"MENSAGEM TRADUZIDA"
-                font_size: "14sp"
-                font_name: "Poppins-Medium.ttf"
-                pos_hint: {"center_x": .5, "center_y": .9} 
-            
-            TextInput:
-                id: mensagemTraduzida
-                size_hint_y: .75
-                font_name: "Poppins-Regular.ttf"
-                pos_hint: {"center_x": .49, "center_y": .4} 
-                background_color: 0, 0, 0, 0    
-                cursor_color: 0, 0, 0, 1
-                cursor_width: "2sp"
-                font_size: "17sp"
-                multiline: False
-                password: True
-            
-            Image: 
-                source: "images/msgtxt.png"     
-                pos_hint: {"center_x": .96, "center_y": .55}
-                size_hint: .7, .7
-            
-            MDFloatLayout:
-                pos_hint: {"center_x": .5, "center_y": 0}
-                size_hint_y: .03    
-                md_bg_color: 120/255, 120/255, 120/255, 1    
-
-        
