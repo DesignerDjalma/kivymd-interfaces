@@ -11,12 +11,10 @@ Window.size = (350 * fatorEscala, 580 * fatorEscala)
 class TelaInicial(Screen):
     pass
 
-class Cabecalho(MDFloatLayout):
-    pass
 
 class TelaPrincipal(Screen):
-    def on_enter(self, *args):
-        Cabecalho.ids.nomeDetetive.txt = f"Detetive: {getpass.getuser()}"
+    def on_enter(self):
+        self.ids.nomeDetetive.text = f"Detetive: {getpass.getuser().upper()}"
 
 class InterfaceApp(MDApp):
     def build(self):

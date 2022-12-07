@@ -106,91 +106,18 @@ ScreenManager:
 
     MDLabel:
         id: nomeDetetive
-        text: "..."
+        text: ""
         font_size: "28sp"
         font_name: "Poppins-SemiBold.ttf"
         pos_hint: {"center_x": .6, "center_y": .73}   
 
-
-
-        # Deslocado
     MDLabel:
         text: "Ajuda"
         halign:"center"
         font_size: "14.5sp"
         font_name: "Poppins-SemiBold.ttf"
-        pos_hint: {"center_x": .5, "center_y": .055}    
-        id: lblogin       
+        pos_hint: {"center_x": .5, "center_y": .055}         
     
 
 
 
-
-    MDFloatLayout:
-        size_hint: .79, .08
-        pos_hint: {"center_x": .5, "center_y": .60}   
-        
-        MDLabel:
-            text:"MENSAGEM SECRETA"
-            font_size: "14sp"
-            font_name: "Poppins-Medium.ttf"
-            pos_hint: {"center_x": .5, "center_y": .9} 
-        
-        TextInput:
-            id: cpf
-            size_hint_y: .75
-            font_name: "Poppins-Regular.ttf"
-            pos_hint: {"center_x": .49, "center_y": .4} 
-            background_color: 0, 0, 0, 0    
-            cursor_color: 0, 0, 0, 1
-            cursor_width: "2sp"
-            foreground_color: 120/255, 120/255, 120/255, 1
-            font_size: "17sp"
-            multiline: False
-        
-        Image: 
-            source: "images/msgbinario.png"     
-            pos_hint: {"center_x": .96, "center_y": .55}
-            size_hint: .7, .7
-        
-        MDFloatLayout:
-            pos_hint: {"center_x": .5, "center_y": 0}
-            size_hint_y: .03    
-            md_bg_color: 120/255, 120/255, 120/255, 1
-
-    
-
-        
-        MDFloatLayout:
-            size_hint: .79, .08
-            pos_hint: {"center_x": .5, "center_y": .30}  
-       
-            MDLabel:
-                text:"MENSAGEM TRADUZIDA"
-                font_size: "14sp"
-                font_name: "Poppins-Medium.ttf"
-                pos_hint: {"center_x": .5, "center_y": .9} 
-            
-            TextInput:
-                id: mensagemTraduzida
-                size_hint_y: .75
-                font_name: "Poppins-Regular.ttf"
-                pos_hint: {"center_x": .49, "center_y": .4} 
-                background_color: 0, 0, 0, 0    
-                cursor_color: 0, 0, 0, 1
-                cursor_width: "2sp"
-                font_size: "17sp"
-                multiline: False
-                password: True
-            
-            Image: 
-                source: "images/msgtxt.png"     
-                pos_hint: {"center_x": .96, "center_y": .55}
-                size_hint: .7, .7
-            
-            MDFloatLayout:
-                pos_hint: {"center_x": .5, "center_y": 0}
-                size_hint_y: .03    
-                md_bg_color: 120/255, 120/255, 120/255, 1    
-
-        
