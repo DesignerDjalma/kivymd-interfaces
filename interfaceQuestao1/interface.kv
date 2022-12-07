@@ -3,16 +3,13 @@ ScreenManager:
     TelaPrincipal:
     TelaAjuda:
 
-
 <CaixaEntradaDeDados@MDFloatLayout>:
     pos_hint: {"center_x": .5, "center_y": .5} # Alterar
     size_hint: .8, .08
-    
     MDFloatLayout:
         pos_hint: {"center_x": .5, "center_y": 0}
         size_hint_y: .03    
         md_bg_color: 120/255, 120/255, 120/255, 1
-
 
 <CaixaImagem@Image>:
     source: "" # Alterar
@@ -30,21 +27,19 @@ ScreenManager:
     size_hint_y: .75
     font_name: "Poppins-Regular.ttf"
     pos_hint: {"center_x": .49, "center_y": .4} 
-    background_color: 0, 0, 0, 0    
+    background_color: 0, 0, 0, 0  
     cursor_color: 0, 0, 0, 1
     cursor_width: "2sp"
-    foreground_color: 120/255, 120/255, 120/255, 1
+    foreground_color: 0, 0, 0, 1
     font_size: "17sp"
     multiline: False
 
 <BotaoPadrao@Button>:
     text: "" # Alterar
-    background_color: 0, 0, 0, 0
+    background_color: 25/255, 38/255, 35/255, 1
     font_name: "Poppins-Medium.ttf"
-    size_hint: .79, .065
-    pos_hint: {"center_x": .5, "center_y": .45}   
-    on_release: root.loga(cpf.text, senha.text)      
-        
+    size_hint: .40, .065
+    pos_hint: {"center_x": .5, "center_y": .45}
     canvas.before:
         RoundedRectangle:
             size: self.size
@@ -83,7 +78,7 @@ ScreenManager:
             # text: "Decifrador λνμΘ"
             #font_size:"55sp"
             font_name: "Poppins-SemiBold.ttf"
-            text: "Decifrador 1.0"
+            text: "P 1.0"
             font_size:"35sp"
             text_color: 0, 0, 0
             pos_hint: {"center_x": .5, "center_y": .28}       
@@ -124,23 +119,55 @@ ScreenManager:
     CaixaEntradaDeDados:
         pos_hint: {"center_x": .5, "center_y": .6}
         CaixaTitulo:
-            text: "MENSAGEM SECRETA"
+            text: "MENSAGEM"
         CaixaImagem:
             source: "../images/msgbinario.png"
         CaixaInput:
+            id: mensagemInicial
 
-    BotaoPadrao:
-        text: "Traduzir"
-        pos_hint: {"center_x": .5, "center_y": .45}
+
+    Button:
+        text: "Traduzir" # Alterar
+        on_release: root.traduzir()
+        background_color: 25/255, 38/255, 35/255, 1
+        font_name: "Poppins-Medium.ttf"
+        size_hint: .40, .065
+        pos_hint: {"center_x": .25, "center_y": .45}
+        canvas.before: 
+            RoundedRectangle:
+                size: self.size
+                pos: self.pos
+                radius: [2]  
+            Color:
+                rgb: 25/255, 38/255, 35/255, 1
+    
+    Button:
+        text: "Codificar" # Alterar
+        on_release: root.codificar()
+        background_color: 25/255, 38/255, 35/255, 1
+        font_name: "Poppins-Medium.ttf"
+        size_hint: .40, .065
+        pos_hint: {"center_x": .75, "center_y": .45}
+        canvas.before:
+            RoundedRectangle:
+                size: self.size
+                pos: self.pos
+                radius: [2]  
+            Color:
+                rgb: 25/255, 38/255, 35/255, 1
+
 
 
     CaixaEntradaDeDados:
         pos_hint: {"center_x": .5, "center_y": .3}
         CaixaTitulo:
-            text: "MENSAGEM TRADUZIDA"
+            text: "RESULTADO"
         CaixaImagem:
             source: "../images/msgtxt.png"
         CaixaInput:
+            disabled: False
+            multiline: True
+            id: mensagemFinal
 
     # Ajuda
     MDLabel:
@@ -161,6 +188,14 @@ ScreenManager:
 
 <TelaAjuda>:
     name: "tela_ajuda"
+
+    MDLabel:
+        id: labelAjuda
+        text: "Para usar o aplicativo basta escrever,\na mensagem que desejar codificar ou traduzir\ne usar os botões para realizar as funções.\n\nDesenvolvido por Djalma Filho ;)\n"
+        font_size: "14sp"
+        font_name: "Poppins-Medium.ttf"
+        pos_hint: {"center_x": .5, "center_y": .5}  
+        halign: 'center'
 
     MDLabel:
         text: "Voltar"
