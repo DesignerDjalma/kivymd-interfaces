@@ -7,7 +7,7 @@ def retornaNomeUsuario() -> str:
 
 def descriptografarMensagem(mensagem: str) -> str:
     mensagem = mensagem.replace("[","").replace("]","").replace(" ","").split(",")
-    chave = {str(i):v for i,v in enumerate(f" {string.printable}")}
+    chave = { str(i):v for i,v in enumerate(f" {string.printable}") }
     return ''.join([chave[i] for i in mensagem if i in chave.keys()])
 
 def criptografarMensagem(mensagem: str) -> str:
