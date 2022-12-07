@@ -2,6 +2,7 @@ ScreenManager:
     TelaInicial:
     TelaPrincipal:
     TelaAjuda:
+    TelaSalvar:
 
 <CaixaEntradaDeDados@MDFloatLayout>:
     pos_hint: {"center_x": .5, "center_y": .5} # Alterar
@@ -49,13 +50,41 @@ ScreenManager:
             rgb: 25/255, 38/255, 35/255, 1
 
 
+<TelaSalvar>:
+    name: "tela_salvar"
+    
+    md_bg_color: 20/255, 20/255, 20/255, .5
+    
+    MDFloatLayout:
+        
+        FileChooserListView:
+            pos_hint: {"center_x": .5, "center_y": .52}    
+            size_hint: .95, .90
+
+        MDFloatLayout:
+            MDLabel:
+                text: "Voltar"
+                halign:"center"
+                font_size: "14.5sp"
+                font_name: "Poppins-SemiBold.ttf"
+                pos_hint: {"center_x": .5, "center_y": .055}    
+            
+            MDIconButton:
+                pos_hint: {"center_x": .5, "center_y": .02}      
+                user_font_size: "45sp"
+                icon: "chevron-left"
+                on_release:
+                    app.root.current = "tela_principal"
+                    app.root.transition.direction = "down"
+                    app.theme_cls.theme_style = "Light"
+                    
+
+    
 
 
 <TelaInicial>:
     name: 'tela_boas_vindas'    
-    
     MDFloatLayout:
-        md_bg_color: 188/255, 227/255, 217/255, 1
         
         Image:
             pos_hint: {"center_x": .54, "center_y": .6}
@@ -72,6 +101,7 @@ ScreenManager:
             on_press:
                 app.root.current = "tela_principal"
                 app.root.transition.direction = "left"
+                
             
         MDLabel:
             id: titulo
@@ -148,6 +178,24 @@ ScreenManager:
         font_name: "Poppins-Medium.ttf"
         size_hint: .40, .065
         pos_hint: {"center_x": .75, "center_y": .45}
+        canvas.before:
+            RoundedRectangle:
+                size: self.size
+                pos: self.pos
+                radius: [2]  
+            Color:
+                rgb: 25/255, 38/255, 35/255, 1
+
+    Button:
+        text: "Salvar" # Alterar
+        on_release:
+            app.root.current = "tela_salvar"
+            app.root.transition.direction = "up"
+            app.theme_cls.theme_style = "Dark"
+        background_color: 25/255, 38/255, 35/255, 1
+        font_name: "Poppins-Medium.ttf"
+        size_hint: .40, .065
+        pos_hint: {"center_x": .5, "center_y": .20}
         canvas.before:
             RoundedRectangle:
                 size: self.size
