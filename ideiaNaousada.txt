@@ -1,0 +1,31 @@
+
+# <TelaSalvar>:
+#     name: "tela_salvar"
+    
+#     md_bg_color: 20/255, 20/255, 20/255, .5
+    
+#     MDFloatLayout:
+        
+#         FileChooserListView:
+#             pos_hint: {"center_x": .5, "center_y": .52}    
+#             size_hint: .95, .90
+
+#         MDFloatLayout:
+#             MDLabel:
+#                 text: "Voltar"
+#                 halign:"center"
+#                 font_size: "14.5sp"
+#                 font_name: "Poppins-SemiBold.ttf"
+#                 pos_hint: {"center_x": .5, "center_y": .055}    
+            
+#             MDIconButton:
+#                 pos_hint: {"center_x": .5, "center_y": .02}      
+#                 user_font_size: "45sp"
+#                 icon: "chevron-left"
+#                 on_release:
+#                     app.root.current = "tela_principal"
+#                     app.root.transition.direction = "down"
+#                     app.theme_cls.theme_style = "Light"
+                    
+
+    

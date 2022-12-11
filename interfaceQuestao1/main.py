@@ -1,18 +1,23 @@
-from kivymd.app import MDApp
 from kivy.core.window import Window
 from kivy.uix.screenmanager import Screen
+from kivymd.app import MDApp
 
 from funcoes import tradutorDeMensagem
 from funcoes import destradutorDeMensagem
 from funcoes import retornaNomeUsuario
 
-fatorEscala = 1.4
-Window.size = (350 * fatorEscala, 580 * fatorEscala)
+from tkinter.filedialog import asksaveasfile 
+from tkinter.messagebox import showinfo
 
+fatorEscala = 1.4
+Window.size = (360 * fatorEscala, 640 * fatorEscala)
+
+class TelaInicial(Screen):
+    pass
 class TelaSalvar(Screen):
     pass
 
-class TelaInicial(Screen):
+class TelaAjuda(Screen):
     pass
 
 class TelaPrincipal(Screen):
@@ -29,19 +34,16 @@ class TelaPrincipal(Screen):
             self.ids.mensagemInicial.text)
 
     def salvar(self) -> None:
-        from kivy.uix.popup import Popup
-        self.janela = Popup(title="Hello")
-
-
-class TelaAjuda(Screen):
-    pass
+        tipos = (('texto', '*.txt'),('Todos os arquivos', '*.*'))
+        arquivo = asksaveasfile(title="Salvar Codigos Secretos",filetypes=tipos,confirmoverwrite=True)
+        if arquivo:
+            with open(file=arquivo.name, mode='a') as arq:
+                arq.write(f"{self.ids.mensagemFinal.text}\n")
+            showinfo(title="Sucesso", message="Seu código foi salvo com Sucesso")
 
 class InterfaceApp(MDApp):
     def build(self):
         self.theme_cls.theme_style = "Light"
-        # self.theme_cls.primary_palette = "Red"  # "Purple", "Red"
-
 
 if __name__ == "__main__":
     InterfaceApp().run()
-
